@@ -9,9 +9,7 @@ import java.util.List;
 /**
  * Created by Amberlee on 6/22/17.
  */
-public class AdSvc {
-    public List<Ad> findAll() {
-    }
+
 
     @Service("adSvc")
     public class AdSvc {
@@ -43,5 +41,4 @@ public class AdSvc {
             save(new Ad());
         }
     }
-}
 

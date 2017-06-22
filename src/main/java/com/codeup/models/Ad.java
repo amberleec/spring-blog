@@ -3,12 +3,8 @@ package com.codeup.models;
 /**
  * Created by Amberlee on 6/22/17.
  */
-public class Ad {
-    public Ad() {
 
-    }
-
-    public class Ad {
+        public class Ad {
         private long id;
         private String title;
         private String description;
@@ -51,4 +47,4 @@ public class Ad {
             this.description = description;
         }
     }
-}
+
