@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 /**
  * Created by Amberlee on 6/22/17.
  */
-public class Post {
 
     @Controller
     public class Post {
@@ -47,4 +46,4 @@ public class Post {
     }
 
 
-}
+
