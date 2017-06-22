@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments :: head('Edit Blog')">
+    <meta charset="UTF-8" />
+</head>
+<body>
+<h1>Edit Post</h1>
+<form th:include="fragments :: form" action="#" th:action="@{/posts/{id}/edit}" method="post" th:object="${post}"></form>
+</body>
+</html>

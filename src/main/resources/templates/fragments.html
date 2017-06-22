@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title)">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <title th:text="${title}">Fragments</title>
+</head>
+
+<body>
+
+<nav th:fragment="navbar">
+    <div id="container">
+        <div id="navbar">
+            <h1>Logo</h1>
+            <a>Link</a>
+            <a>Link</a>
+            <a>Link</a>
+        </div>
+    </div>
+</nav>
+
+<!--// ToDo: Refactor forms to avoid duplicate code-->
+<form th:fragment="form" action="#" method="post" th:object="${post}">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" id="title" class="form-control" th:field="*{title}"/>
+    </div>
+    <div class="form-group">
+        <label>Body</label>
+        <input type="text" name="body" id="body" class="form-control" th:field="*{body}"/>
+    </div>
+    <button class="btn btn-default">Save</button>
+</form>
+
+
+<div th:fragment="scripts">
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</div>
+
+</body>
+
+</html>
