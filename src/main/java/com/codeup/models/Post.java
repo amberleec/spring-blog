@@ -1,49 +1,74 @@
 package com.codeup.models;
 
-import org.springframework.stereotype.Controller;
+import javax.persistence.*;
 
 /**
  * Created by Amberlee on 6/22/17.
  */
 
-    @Controller
-    public class Post {
-        private long id;
-        private String title;
-        private String body;
+@Entity
+@Table(name="posts")
+public class Post {
 
-        public String getTitle() { return title; }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    @Column(nullable = false, length = 100)
+    private String title;
 
-        public String getBody() {
-            return body;
-        }
+    @Column(nullable = false, columnDefinition = "Text")
+    private String body;
 
-        public void setBody(String body) {
-            this.body = body;
-        }
+    @OneToOne
+    private User owner;
 
-        public long getId() { return id; }
 
-        public void setId(long id) { this.id = id; }
 
-        public Post(long id, String title, String body) {
-            this.id = id;
-            this.title = title;
-            this.body = body;
-        }
+    public User getOwner() { return owner; }
 
-        public Post(String title, String body) {
-            this.title = title;
-            this.body = body;
-        }
+    public void setOwner(User owner) { this.owner = owner; }
 
-        public Post() {
-        }
+    public String getTitle() { return title; }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
+
+
+
+    public Post(long id, String title, String body, User owner) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.owner = owner;
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    public Post(String title, String body, User owner) {
+        this.title = title;
+        this.body = body;
+        this.owner = owner;
+    }
+
+    public Post() {
+    }
+}
 
 

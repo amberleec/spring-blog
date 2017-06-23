@@ -1,6 +1,8 @@
 package com.codeup.svcs;
 
 import com.codeup.models.Post;
+import com.codeup.repositories.PostsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,36 +11,31 @@ import java.util.List;
 /**
  * Created by Amberlee on 6/22/17.
  */
+@Service("postSvc")
 public class PostSvc {
-    @Service("postSvc")
-    public class PostSvc {
 
-        private List<Post> posts;
+    private PostsRepository postSvc;
 
-        public PostSvc() {
-            createPosts();
-        }
 
-        public List<Post> findAll() {
-            return posts;
-        }
+    @Autowired
+    public PostSvc(PostsRepository postSvc){
+        this.postSvc = postSvc;
+    }
 
-        public Post save(Post post) {
-            post.setId((long)posts.size() + 1);
-            posts.add(post);
-            return post;
-        }
+    public Iterable<Post> findAll(){
+        return postSvc.findAll();
+    }
 
-        public Post findOne(long id) {
-            return posts.get((int)(id - 1));
-        }
+    public Post findOne(long id){
+        return postSvc.findOne(id);
+    }
 
-        private void createPosts() {
-            posts = new ArrayList<>();
-            save(new Post("Post One", "some text"));
-            save(new Post("Post Two", "some more text"));
-            save(new Post("Post Three", "some more more text"));
-            save(new Post("Post Four", "some more more more text"));
-        }
+    public Post save(Post post){
+        postSvc.save(post);
+        return post;
+    }
+
+    public void delete(long id){
+        postSvc.delete(id);
     }
 }
