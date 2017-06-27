@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: header">
     <meta charset="UTF-8" />
-    <title>All Blog Posts</title>
+    <title>Log In</title>
+    <link href="/css/posts-index.css" />
 </head>
 <body>
 
-<div th:each="post : ${allPosts}">
-    <span th:text="${post.title}" />
-    <span th:text="${post.body}" />
+<div id="index-grid">
+
+    <nav class="nav" th:replace="fragments :: navbar"></nav>
+
+    <h1 id="content-header">Current Woofs</h1>
+
+    <div id="index-posts-flexbox">
+        <div th:each="post : ${allPosts}" class="post-container">
+            <h2 id="post-title">Title: <span th:text="${post.title}"/></h2>
+            <p id="post-body">Body: <span th:text="${post.body}"/></p>
+            <div id="edit">
+                <a th:href="${'/posts/' + post.id + '/edit'}">EDIT</a>
+            </div>
+            <div id="delete">
+                <a th:href="${'/posts/delete'}">DELETE</a>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="fragments :: footer" id="footer"></footer>
+
 </div>
 
 </body>
