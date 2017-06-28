@@ -1,7 +1,5 @@
 package com.codeup.controllers;
 
-import org.springframework.stereotype.Controller;
-
 import com.codeup.models.User;
 import com.codeup.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 
 
-    @Controller
-    public class UserController {
+@Controller
+public class UserController {
 
-        @Autowired
-        UsersRepository usersDao;
+    @Autowired
+    UsersRepository usersDao;
 
-        @Autowired
-        private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-        @PostMapping("/register")
-        public String registerUser(@ModelAttribute User user) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            usersDao.save(user);
-            return "redirect:login";
-        }
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        usersDao.save(user);
+        return "redirect:login";
     }
+}
 
 

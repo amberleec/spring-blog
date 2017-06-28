@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by Amberlee on 6/22/17.
  */
+@Controller
+
 public class MathController {
-    @Controller
-    public class MathController {
 
         @GetMapping("/add/{number1}/and/{number2}")
         @ResponseBody
@@ -38,4 +38,3 @@ public class MathController {
         }
 
     }
-}

@@ -1,26 +1,24 @@
 package com.codeup.controllers;
 
 
-import com.codeup.models.Post;
-import com.codeup.models.User;
-import com.codeup.repositories.PostsRepository;
-import com.codeup.repositories.UsersRepository;
-import com.codeup.svcs.PostSvc;
-//import com.codeup.svcs.UserDetailsLoader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+        import com.codeup.models.Post;
+        import com.codeup.models.User;
+        import com.codeup.repositories.PostsRepository;
+        import com.codeup.repositories.UsersRepository;
+        import com.codeup.svcs.PostSvc;
+        import com.codeup.svcs.UserDetailsLoader;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.security.core.context.SecurityContextHolder;
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.validation.Errors;
+        import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+        import javax.validation.Valid;
+        import java.util.ArrayList;
+        import java.util.List;
 
-/**
- * Created by Amberlee on 6/22/17.
- */
+
 @Controller
 public class PostsController {
 
@@ -35,11 +33,8 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String viewAll(Model model) {
-        Boolean isUserLoggedIn = (Boolean) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         Iterable<Post> allPosts = postSvc.findAll();
         model.addAttribute("allPosts", allPosts);
-        model.addAttribute("userLoggedIn", isUserLoggedIn);
         return "posts/index";
     }
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * Created by Amberlee on 6/22/17.
  */
-public class RollDice {
+
     @Controller
     public class RollDice {
 
@@ -41,4 +41,4 @@ public class RollDice {
         }
 
     }
-}
+
